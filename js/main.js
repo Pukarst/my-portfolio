@@ -5,6 +5,7 @@ const sections = document.querySelectorAll("main section, .hero");
 const revealItems = document.querySelectorAll(
     ".section-heading, .about-card, .objective-card, .card, .project-card, .timeline-item, .experience-card, .contact-card"
 );
+const footerYear = document.querySelector("#footer-year");
 
 if (menuToggle && navLinks) {
     menuToggle.addEventListener("click", () => {
@@ -65,3 +66,7 @@ const revealObserver = new IntersectionObserver(
 revealItems.forEach((item) => {
     revealObserver.observe(item);
 });
+
+if (footerYear) {
+    footerYear.textContent = new Date().getFullYear();
+}
