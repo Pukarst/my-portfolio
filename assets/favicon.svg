@@ -1,6 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Pukar Orbit P favicon">
-  <rect width="64" height="64" rx="16" fill="#ffffff"/>
-  <rect x="18" y="14" width="8" height="36" rx="4" fill="#111111"/>
-  <circle cx="38" cy="26" r="12" fill="none" stroke="#111111" stroke-width="8"/>
-  <circle cx="53" cy="14" r="3.5" fill="#111111"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Pukar Bade portfolio favicon">
+  <defs>
+    <linearGradient id="orbit" x1="10" y1="54" x2="55" y2="9" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14b8a6"/>
+      <stop offset="1" stop-color="#60a5fa"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(24 20) rotate(50) scale(46)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2563eb" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#0f172a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#0b1220"/>
+  <rect width="64" height="64" rx="16" fill="url(#glow)"/>
+  <path d="M11 39c-1-13 8-25 21-28 10-2 19 2 24 9" fill="none" stroke="url(#orbit)" stroke-linecap="round" stroke-width="3"/>
+  <path d="M21 49V16h13c8 0 12 4 12 10s-4 10-12 10h-5v13h-8Zm8-20h5c3 0 5-1 5-3s-2-3-5-3h-5v6Z" fill="#f8fafc"/>
+  <circle cx="53" cy="15" r="4" fill="#2dd4bf"/>
+  <circle cx="53" cy="15" r="1.5" fill="#ecfeff"/>
 </svg>

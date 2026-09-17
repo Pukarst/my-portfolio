@@ -22,10 +22,13 @@ It is currently built using static web technologies, with plans to migrate to Dj
 ## ✨ Features
 
 - Responsive design
+- Light and dark mode toggle
+- Theme preference persistence with local storage
+- Responsive mobile navigation menu
 - Projects showcase
 - About section
 - Skills overview
-- Contact page
+- Social contact links for email, GitHub, LinkedIn, and YouTube
 
 ---
 

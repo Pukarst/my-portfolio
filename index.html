@@ -9,17 +9,39 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="icon" href="assets/favicon.svg" sizes="any">
-    <link rel="mask-icon" href="assets/favicon.svg" color="#111111">
+    <link rel="mask-icon" href="assets/favicon.svg" color="#0b1220">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script>
+        document.documentElement.dataset.theme = localStorage.getItem("portfolio-theme") || "light";
+    </script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="is-loading" aria-busy="true">
+    <div class="page-loader" role="status" aria-label="Loading portfolio">
+        <div class="skeleton-loader" aria-hidden="true">
+            <span class="skeleton-logo"></span>
+            <span class="skeleton-nav"></span>
+            <div class="skeleton-hero">
+                <span class="skeleton-line skeleton-line-short"></span>
+                <span class="skeleton-line skeleton-line-title"></span>
+                <span class="skeleton-line"></span>
+                <span class="skeleton-line skeleton-line-medium"></span>
+                <span class="skeleton-button"></span>
+            </div>
+            <span class="skeleton-avatar"></span>
+        </div>
+        <span class="loader-message">Loading portfolio...</span>
+    </div>
+
     <nav class="navbar">
-        <a class="logo" href="#home">Pukar Bade</a>
+        <a class="logo" href="#home" aria-label="Pukar Bade home">
+            <img src="assets/favicon.svg" alt="" class="logo-icon">
+            <span>Pukar Bade</span>
+        </a>
 
         <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
             <span></span>
@@ -37,6 +59,22 @@
             <li><a href="#certifications">Certifications</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+
+        <div class="navbar-tools">
+            <div class="clock-control">
+                <button class="clock-toggle" id="clock-toggle" type="button" aria-label="Show current date and time" aria-expanded="false" aria-controls="current-time">
+                    <i class="fa-regular fa-clock" aria-hidden="true"></i>
+                </button>
+                <time class="current-time" id="current-time" aria-live="off" hidden>
+                    <span class="current-clock" id="current-clock"></span>
+                    <span class="current-date" id="current-date"></span>
+                </time>
+            </div>
+
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        </button>
+        </div>
     </nav>
 
     <main>
@@ -257,7 +295,7 @@
                 </a>
 
                 <a class="contact-card" href="https://www.linkedin.com/in/pukar-bade-b7b85b323/" target="_blank" rel="noopener" aria-label="Open LinkedIn profile">
-                    <span class="contact-icon" aria-hidden="true">
+                    <span class="contact-icon contact-icon-linkedin-background" aria-hidden="true">
                         <i class="fa-brands fa-linkedin-in contact-icon-linkedin"></i>
                     </span>
                     <span class="contact-text">
@@ -280,7 +318,27 @@
     </main>
 
     <footer class="site-footer">
-        <p>&copy; <span id="footer-year">2026</span> Pukar Bade. Built with HTML, CSS and JavaScript.</p>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a class="footer-logo" href="#home" aria-label="Pukar Bade home">
+                    <img src="assets/favicon.svg" alt="" class="footer-logo-icon">
+                    <span>Pukar Bade</span>
+                </a>
+                <p>&copy; <span id="footer-year">2026</span> Pukar Bade.</p>
+            </div>
+
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+            </nav>
+
+            <div class="footer-actions">
+                <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top" title="Back to top">
+                    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
     </footer>
 
     <script src="js/main.js"></script>
