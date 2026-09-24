@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
-  <title id="title">Pukar Bade - Backend Developer Portfolio</title>
+  <title id="title">Pukar Bade - Software Developer</title>
   <desc id="description">Python and Django backend developer portfolio preview.</desc>
   <defs>
     <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
@@ -27,5 +27,5 @@
   <text x="84" y="385" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="72" font-weight="800">Pukar Bade</text>
   <text x="88" y="445" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="30">Python / Django / Practical Web Applications</text>
   <rect x="88" y="510" width="220" height="6" rx="3" fill="url(#accent)"/>
-  <text x="88" y="560" fill="#99f6e4" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="600">pukarbade.com.np</text>
+  <text x="88" y="560" fill="#99f6e4" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="600">Python • Django • HTMX • React Native</text>
 </svg>
