@@ -1,4 +1,16 @@
 (() => {
+  const body = document.body;
+  const hidePageLoader = () => {
+    body.classList.remove('is-loading');
+    body.classList.add('is-ready');
+    body.setAttribute('aria-busy', 'false');
+  };
+  const loaderTimeout = window.setTimeout(hidePageLoader, 1600);
+  window.addEventListener('load', () => {
+    window.clearTimeout(loaderTimeout);
+    hidePageLoader();
+  }, { once: true });
+
   const root = document.documentElement;
   const themeButton = document.querySelector('.theme-toggle');
   const setTheme = (theme) => {

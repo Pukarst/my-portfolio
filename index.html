@@ -14,7 +14,14 @@
   <script>try{document.documentElement.dataset.theme=localStorage.getItem('portfolio-theme')||'dark'}catch(e){}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","name":"Pukar Bade Portfolio","url":"https://pukarbade.com.np/","mainEntity":{"@type":"Person","name":"Pukar Bade","jobTitle":"Python & Django Developer","url":"https://pukarbade.com.np/","sameAs":["https://github.com/Pukarst","https://www.linkedin.com/in/pukar-bade-b7b85b323/"],"knowsAbout":["Python","Django","HTMX","REST APIs"]}}</script>
 </head>
-<body>
+<body class="is-loading" aria-busy="true">
+  <div class="page-loader" role="status" aria-label="Loading portfolio">
+    <div class="loader-layout" aria-hidden="true">
+      <div class="loader-nav"><span class="skeleton loader-logo"></span><span class="skeleton loader-nav-line"></span></div>
+      <div class="loader-hero"><div class="loader-copy"><span class="skeleton loader-kicker"></span><span class="skeleton loader-title"></span><span class="skeleton loader-title loader-title-short"></span><span class="skeleton loader-text"></span><span class="skeleton loader-text loader-text-short"></span><div class="loader-buttons"><span class="skeleton loader-button"></span><span class="skeleton loader-button"></span></div></div><span class="skeleton loader-avatar"></span></div>
+      <span class="loader-caption mono-label">PREPARING YOUR PORTFOLIO</span>
+    </div>
+  </div>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header"><nav class="nav wrap" aria-label="Main navigation">
     <a class="brand" href="#home"><img class="brand-mark" src="assets/images/pukar-bade-mark.png" alt=""><span>Pukar Bade</span></a>
