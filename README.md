@@ -1,50 +1,34 @@
-# My Portfolio
+# Pukar Bade — Portfolio
 
-A personal portfolio website built to showcase my projects, technical skills, and achievements.
+A responsive, static portfolio site for GitHub Pages, hosted at [pukarbade.com.np](https://pukarbade.com.np/).
 
----
+## Built with
 
-## 🚀 Tech Stack
+- HTML, CSS, and vanilla JavaScript
+- Google Fonts: Manrope and DM Mono
+- No build step or backend required
 
-- HTML
-- CSS
-- JavaScript
+## Features
 
----
+- Responsive navigation and dark/light theme preference
+- About, skills, professional experience, projects, services, education, and contact sections
+- Technology filters for project cards
+- Case study page for the Online Quiz Management System
+- Contact form that prepares a message in the visitor’s email app
+- SEO metadata, Open Graph tags, `robots.txt`, and `sitemap.xml`
 
-## 📌 About
+## Run locally
 
-This is my personal portfolio where I display my work, skills, and development journey.  
-It is currently built using static web technologies, with plans to migrate to Django in the future.
+Open `index.html` in a browser, or serve this directory with any static file server. The project can be deployed as-is to GitHub Pages.
 
----
+## Project structure
 
-## ✨ Features
-
-- Responsive design
-- Light and dark mode toggle
-- Theme preference persistence with local storage
-- Responsive mobile navigation menu
-- Projects showcase
-- About section
-- Skills overview
-- Social contact links for email, GitHub, LinkedIn, and YouTube
-
----
-
-## 🔮 Future Plans
-
-- Migrate to Django backend
-- Add blog functionality
-- Improve UI/UX
-- Add dynamic project management
-
----
-
-## 📦 Setup
-
-```bash
-git clone https://github.com/Pukarst/my-portfolio.git
-cd my-portfolio
-open index.html
+```text
+index.html
+css/style.css
+js/main.js
+projects/online-quiz.html
+assets/
+robots.txt
+sitemap.xml
 ```

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pukarbade.com.np/sitemap.xml

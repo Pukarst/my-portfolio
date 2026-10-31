@@ -1,160 +1,77 @@
-const pageLoader = document.querySelector(".page-loader");
+(() => {
+  const root = document.documentElement;
+  const themeButton = document.querySelector('.theme-toggle');
+  const setTheme = (theme) => {
+    root.dataset.theme = theme;
+    try { localStorage.setItem('portfolio-theme', theme); } catch (_) {}
+    const next = theme === 'dark' ? 'light' : 'dark';
+    themeButton?.setAttribute('aria-label', `Switch to ${next} mode`);
+    themeButton?.setAttribute('title', `Switch to ${next} mode`);
+    if (themeButton) themeButton.innerHTML = theme === 'dark' ? '<span aria-hidden="true">&#9728;</span>' : '<span aria-hidden="true">&#9790;</span>';
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#0b1120' : '#f8fafc');
+  };
+  setTheme(root.dataset.theme || 'dark');
+  themeButton?.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
 
-const hidePageLoader = () => {
-    document.body.classList.remove("is-loading");
-    document.body.classList.add("is-ready");
-    document.body.setAttribute("aria-busy", "false");
-};
+  const menuButton = document.querySelector('.menu-toggle');
+  const navPanel = document.querySelector('.nav-panel');
+  const closeMenu = () => {
+    navPanel?.classList.remove('open');
+    menuButton?.setAttribute('aria-expanded', 'false');
+    menuButton?.setAttribute('aria-label', 'Open navigation');
+  };
+  menuButton?.addEventListener('click', () => {
+    const open = navPanel?.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', String(Boolean(open)));
+    menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+  });
+  navPanel?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMenu(); });
 
-window.addEventListener("load", hidePageLoader, { once: true });
-window.setTimeout(hidePageLoader, 3500);
-
-const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
-const navItems = document.querySelectorAll(".nav-links a");
-const sections = document.querySelectorAll("main section, .hero");
-const revealItems = document.querySelectorAll(
-    ".section-heading, .about-card, .objective-card, .card, .project-card, .timeline-item, .experience-card, .contact-card"
-);
-const footerYear = document.querySelector("#footer-year");
-const currentTime = document.querySelector("#current-time");
-const currentClock = document.querySelector("#current-clock");
-const currentDate = document.querySelector("#current-date");
-const themeToggle = document.querySelector(".theme-toggle");
-const clockToggle = document.querySelector("#clock-toggle");
-const backToTop = document.querySelector("#back-to-top");
-
-const setTheme = (theme) => {
-    const isDark = theme === "dark";
-    document.documentElement.dataset.theme = isDark ? "dark" : "light";
-    localStorage.setItem("portfolio-theme", isDark ? "dark" : "light");
-
-    if (themeToggle) {
-        const nextTheme = isDark ? "light" : "dark";
-        themeToggle.setAttribute("aria-label", `Switch to ${nextTheme} mode`);
-        themeToggle.setAttribute("title", `Switch to ${nextTheme} mode`);
-        themeToggle.setAttribute("aria-pressed", String(isDark));
-        themeToggle.innerHTML = `<i class="fa-solid fa-${isDark ? "sun" : "moon"}" aria-hidden="true"></i>`;
-    }
-};
-
-setTheme(document.documentElement.dataset.theme || "light");
-
-themeToggle?.addEventListener("click", () => {
-    setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
-});
-
-if (menuToggle && navLinks) {
-    menuToggle.addEventListener("click", () => {
-        const isOpen = navLinks.classList.toggle("open");
-        menuToggle.setAttribute("aria-expanded", String(isOpen));
+  document.querySelectorAll('.filter-button').forEach((button) => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+      document.querySelectorAll('.filter-button').forEach((item) => {
+        const active = item === button;
+        item.classList.toggle('active', active);
+        item.setAttribute('aria-pressed', String(active));
+      });
+      document.querySelectorAll('.project-card').forEach((card) => {
+        const tech = (card.dataset.tech || '').split(' ');
+        card.hidden = filter !== 'all' && !tech.includes(filter);
+      });
     });
-}
+  });
 
-navItems.forEach((link) => {
-    link.addEventListener("click", () => {
-        navLinks?.classList.remove("open");
-        menuToggle?.setAttribute("aria-expanded", "false");
-    });
-});
+  const year = document.querySelector('#year');
+  if (year) year.textContent = String(new Date().getFullYear());
 
-const observer = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) {
-                return;
-            }
-
-            navItems.forEach((link) => {
-                link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`);
-            });
-        });
-    },
-    {
-        rootMargin: "-45% 0px -45% 0px",
-        threshold: 0
-    }
-);
-
-sections.forEach((section) => {
-    observer.observe(section);
-});
-
-revealItems.forEach((item, index) => {
-    item.classList.add("reveal", `reveal-delay-${(index % 3) + 1}`);
-});
-
-const revealObserver = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) {
-                return;
-            }
-
-            entry.target.classList.add("visible");
-            revealObserver.unobserve(entry.target);
-        });
-    },
-    {
-        threshold: 0.15
-    }
-);
-
-revealItems.forEach((item) => {
-    revealObserver.observe(item);
-});
-
-if (footerYear) {
-    footerYear.textContent = new Date().getFullYear();
-}
-
-if (currentTime) {
-    const updateCurrentTime = () => {
-        const now = new Date();
-        currentClock.textContent = new Intl.DateTimeFormat(undefined, {
-            hour: "numeric",
-            minute: "2-digit",
-            second: "2-digit"
-        }).format(now);
-        currentDate.textContent = new Intl.DateTimeFormat(undefined, {
-            weekday: "long",
-            year: "numeric",
-            month: "short",
-            day: "numeric"
-        }).format(now);
-        currentTime.dateTime = now.toISOString();
-    };
-
-    updateCurrentTime();
-    window.setInterval(updateCurrentTime, 1000);
-}
-
-if (clockToggle && currentTime) {
-    const setClockVisibility = (isOpen) => {
-        currentTime.hidden = !isOpen;
-        clockToggle.setAttribute("aria-expanded", String(isOpen));
-    };
-
-    clockToggle.addEventListener("click", () => {
-        setClockVisibility(currentTime.hidden);
-    });
-
-    document.addEventListener("click", (event) => {
-        if (!event.target.closest(".clock-control")) {
-            setClockVisibility(false);
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const revealTargets = document.querySelectorAll(
+      '.section-top, .section-heading-row, .about-copy, .highlights, .skill-card, .experience-card, .project-card, .services-grid article, .education-item, .learning-list, .contact-form'
+    );
+    document.documentElement.classList.add('has-reveal');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
         }
-    });
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
+    revealTargets.forEach((target) => revealObserver.observe(target));
+  }
 
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-            setClockVisibility(false);
-            clockToggle.focus();
-        }
-    });
-}
-
-if (backToTop) {
-    backToTop.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-}
+  document.querySelector('#contact-form')?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const subject = `Portfolio inquiry from ${data.get('name')}`;
+    const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`;
+    const url = `mailto:bade5pukar@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const note = document.querySelector('#form-note');
+    if (note) note.textContent = 'Your email app should open with the message ready. If it does not, email bade5pukar@gmail.com directly.';
+    window.location.href = url;
+  });
+})();
