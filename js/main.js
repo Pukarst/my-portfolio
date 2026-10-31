@@ -40,6 +40,36 @@
   navPanel?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
   document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMenu(); });
 
+  const sectionLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+  const syncActiveNav = () => {
+    const marker = (document.querySelector('.site-header')?.offsetHeight || 0) + 80;
+    let activeLink = sectionLinks[0];
+    sectionLinks.forEach((link) => {
+      const section = document.querySelector(link.getAttribute('href'));
+      if (section && section.getBoundingClientRect().top <= marker) activeLink = link;
+    });
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+      activeLink = sectionLinks[sectionLinks.length - 1];
+    }
+    sectionLinks.forEach((link) => {
+      if (link === activeLink) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+  let navUpdateQueued = false;
+  const queueNavUpdate = () => {
+    if (navUpdateQueued) return;
+    navUpdateQueued = true;
+    window.requestAnimationFrame(() => {
+      syncActiveNav();
+      navUpdateQueued = false;
+    });
+  };
+  window.addEventListener('scroll', queueNavUpdate, { passive: true });
+  window.addEventListener('resize', queueNavUpdate);
+  window.addEventListener('hashchange', queueNavUpdate);
+  syncActiveNav();
+
   document.querySelectorAll('.filter-button').forEach((button) => {
     button.addEventListener('click', () => {
       const filter = button.dataset.filter;
