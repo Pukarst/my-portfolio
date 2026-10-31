@@ -108,8 +108,6 @@ h1{font-size:clamp(48px,6.7vw,82px);line-height:1.08;letter-spacing:-.065em;marg
 .project-kicker{font-size:8px;color:var(--accent)}
 .project-content h3{font-size:17px;line-height:1.4;margin:6px 0 0}
 .project-content>p{font-size:11px;line-height:1.8;color:var(--muted);margin:10px 0}
-.arrow-link{color:var(--accent);text-decoration:none;border:1px solid var(--border);border-radius:50%;width:32px;height:32px;display:grid;place-items:center}
-.arrow-link:hover{border-color:var(--accent)}
 .feature-list{padding-left:15px;color:var(--muted);font-size:10px;line-height:1.85;margin:10px 0}
 .project-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--border);padding-top:14px;margin-top:14px}
 .project-bottom .chip-row{margin:0}
@@ -145,6 +143,8 @@ h1{font-size:clamp(48px,6.7vw,82px);line-height:1.08;letter-spacing:-.065em;marg
 .contact-email{font:16px var(--mono);color:var(--accent);text-decoration:none;display:inline-flex;gap:13px;border-bottom:1px solid rgba(45,212,191,.35);padding-bottom:8px}
 .contact-email span{font-size:12px}
 .contact-social{display:flex;gap:19px;margin-top:35px;align-items:center}
+.contact-social a{display:inline-flex;align-items:center;gap:7px}
+.contact-social svg{display:block;width:16px;height:16px;fill:currentColor}
 .contact-social span{font:9px var(--mono);color:var(--faint)}
 .contact-form{display:flex;flex-direction:column;padding:26px;background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow)}
 .contact-form label{font:9px var(--mono);color:var(--muted);margin:0 0 6px}
