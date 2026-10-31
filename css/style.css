@@ -125,7 +125,6 @@ h1{font-size:clamp(48px,6.7vw,82px);line-height:1.08;letter-spacing:-.065em;marg
 .service-num{color:var(--accent)}
 .services-grid h3{margin-top:23px}
 .services-grid p{max-width:275px;font-size:11px;color:var(--muted)}
-.service-arrow{position:absolute;right:22px;top:20px;color:var(--faint)}
 .service-learning{background:rgba(167,139,250,.035)}
 .learning-tag{color:var(--accent-2);font:8px var(--mono)}
 .education-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
