@@ -25,6 +25,22 @@
   setTheme(root.dataset.theme || 'dark');
   themeButton?.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
 
+  const localClock = document.querySelector('#local-clock');
+  if (localClock) {
+    const localDate = new Intl.DateTimeFormat(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+    const localTime = new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit', hour12: true });
+    const dateOutput = localClock.querySelector('#local-date');
+    const timeOutput = localClock.querySelector('#local-time');
+    const updateClock = () => {
+      const now = new Date();
+      if (dateOutput) dateOutput.textContent = localDate.format(now);
+      if (timeOutput) timeOutput.textContent = localTime.format(now);
+      localClock.dateTime = now.toISOString();
+    };
+    updateClock();
+    window.setInterval(updateClock, 30_000);
+  }
+
   const menuButton = document.querySelector('.menu-toggle');
   const navPanel = document.querySelector('.nav-panel');
   const closeMenu = () => {
