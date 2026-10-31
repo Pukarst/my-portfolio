@@ -77,7 +77,7 @@ h1{font-size:clamp(48px,6.7vw,82px);line-height:1.08;letter-spacing:-.065em;marg
 .section-heading-row .section-title{margin:0}
 .section-intro{max-width:350px;color:var(--muted);font-size:13px;margin:0 0 8px}
 .skill-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.skill-card{position:relative;border:1px solid var(--border);padding:25px 27px;background:color-mix(in srgb,var(--bg) 35%,transparent);min-height:190px}
+.skill-card{position:relative;border:1px solid var(--border);border-radius:12px;padding:25px 27px;background:color-mix(in srgb,var(--bg) 35%,transparent);min-height:190px}
 .skill-primary{border-color:rgba(45,212,191,.34)}
 .skill-learning{border-style:dashed}
 .skill-index{color:var(--accent)}
@@ -103,7 +103,7 @@ h1{font-size:clamp(48px,6.7vw,82px);line-height:1.08;letter-spacing:-.065em;marg
 .filter-button{background:transparent;border:1px solid var(--border);border-radius:4px;padding:7px 12px;color:var(--muted);font:10px var(--mono);cursor:pointer}
 .filter-button:hover,.filter-button.active{border-color:var(--accent);color:var(--accent);background:rgba(45,212,191,.06)}
 .project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.project-card{overflow:hidden;border:1px solid var(--border);background:var(--bg);transition:transform .2s,border .2s}
+.project-card{overflow:hidden;border:1px solid var(--border);border-radius:12px;background:var(--bg);transition:transform .2s,border .2s}
 .project-card:hover{transform:translateY(-4px);border-color:rgba(45,212,191,.45)}
 .project-card[hidden]{display:none}
 .project-content{padding:22px 23px 20px}
@@ -119,8 +119,8 @@ h1{font-size:clamp(48px,6.7vw,82px);line-height:1.08;letter-spacing:-.065em;marg
 .project-note{font:8px var(--mono);color:var(--faint)}
 .compact-project{min-height:235px;padding:23px}
 .compact-project .project-content>p{max-width:440px}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);border-left:1px solid var(--border)}
-.services-grid article{position:relative;min-height:205px;padding:23px 24px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.services-grid article{position:relative;min-height:205px;padding:23px 24px;border:1px solid var(--border);border-radius:12px}
 .service-num{color:var(--accent)}
 .services-grid h3{margin-top:23px}
 .services-grid p{max-width:275px;font-size:11px;color:var(--muted)}
@@ -147,7 +147,7 @@ h1{font-size:clamp(48px,6.7vw,82px);line-height:1.08;letter-spacing:-.065em;marg
 .contact-social a{display:inline-flex;align-items:center;gap:7px}
 .contact-social svg{display:block;width:16px;height:16px;fill:currentColor}
 .contact-social span{font:9px var(--mono);color:var(--faint)}
-.contact-form{display:flex;flex-direction:column;padding:26px;background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow)}
+.contact-form{display:flex;flex-direction:column;padding:26px;background:var(--bg);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)}
 .contact-form label{font:9px var(--mono);color:var(--muted);margin:0 0 6px}
 .contact-form input,.contact-form textarea{width:100%;color:var(--text);background:var(--surface);border:1px solid var(--border);padding:11px 12px;border-radius:3px;outline:none;font-size:11px;margin-bottom:16px}
 .contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent)}
