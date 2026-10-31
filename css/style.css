@@ -158,6 +158,8 @@ h1{font-size:clamp(48px,6.7vw,82px);line-height:1.08;letter-spacing:-.065em;marg
 .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px}
 .footer-inner>span,.footer-inner>a:last-child{font:9px var(--mono);color:var(--faint);text-decoration:none}
 .footer-inner>a:last-child:hover{color:var(--accent)}
+.back-to-top{display:inline-flex;align-items:center;gap:7px}
+.back-to-top svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:900px){.nav{gap:15px}
 .nav-panel{gap:15px}
 .nav-links{gap:12px}
